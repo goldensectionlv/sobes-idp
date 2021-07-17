@@ -53,13 +53,14 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .category {
   margin-bottom: 16px;
   cursor: pointer;
+  clear: $black;
 }
 .category:hover {
-  color: #59606D;
+  color: $grey-light;
   text-decoration: none;
 }
 

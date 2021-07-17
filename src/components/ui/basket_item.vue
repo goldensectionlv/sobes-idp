@@ -78,22 +78,16 @@ export default {
 .basket_item {
   width: 100%;
   display: flex;
-  //align-items: center;
   justify-content: space-between;
   height: 120px;
-  //border: 1px solid rgba(0, 0, 0, .1);
   border-radius: 8px;
   margin-bottom: 12px;
   padding: 15px 25px;
-  //background-color: red;
   &__info {
-    display: flex;
-    flex-direction: column;
-    //justify-content: space-between;
+    @include flex-column;
     width: 70%;
     font-size: 14px;
     padding: 0 15px;
-    //border: 1px solid rgba(0, 0, 0, .1);
     height: 100%;
   }
 }

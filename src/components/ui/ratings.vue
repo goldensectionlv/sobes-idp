@@ -20,9 +20,9 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .rating_num {
-  color: #F2C94C;
+  color: $yellow;
   font-weight: bold;
   font-size: 10px;
 }

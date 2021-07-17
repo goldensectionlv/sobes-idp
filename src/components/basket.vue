@@ -109,39 +109,38 @@ export default {
 
 <style lang="scss" scoped>
 .basket_container {
-  font-family: 'PT Sans', sans-serif;
+  font-family: $main-font;
   width: 100vw;
   height: 100vh;
   position: fixed;
   display: flex;
   justify-content: flex-end;
-  background-color: rgba(0, 0, 0, .5);
+  background-color: rgba(255, 255, 255, .8);
   z-index: 2;
 
   &__basket {
     width: 460px;
-    background-color: white;
+    background-color: $white;
     height: 100%;
     overflow-y: scroll;
     padding: 52px;
   }
 
   &__thanks {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex-align-center;
     flex-direction: column;
     height: 85%;
     width: 100%;
 
     &__1 {
       font-size: 24px;
-      font-weight: bold
+      font-weight: bold;
+      color: $black;
     }
 
     &__2 {
-      font-size: 16px;
-      color: #59606D;
+      @include regular_text;
+      color: $grey;
     }
   }
 }

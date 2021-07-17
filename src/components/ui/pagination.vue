@@ -22,19 +22,17 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .active_page {
-  color: red;
+  color: $red;
 }
 
 .number_of_page_item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flex-align-center;
   width: 50px;
   height: 50px;
   margin: 30px 1%;
-  border: 2px solid black;
+  border: 2px solid $black;
   border-radius: 3px;
   cursor: pointer;
 }

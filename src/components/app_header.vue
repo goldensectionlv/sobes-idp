@@ -64,25 +64,23 @@ export default {
     font-weight: bold;
     font-size: 22px;
     line-height: 28px;
-    color: #59606D;
+    color: $grey;
   }
 
   &-icon_container {
     position: relative;
 
     &-counter {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      @include flex-align-center;
       width: 15px;
       height: 15px;
       right: 0;
       position: absolute;
       border-radius: 50%;
-      background-color: #959DAD;
+      background-color: $grey-light;
       font-size: 8px;
       font-weight: 700;
-      color: white;
+      color: $white;
       z-index: 1;
       transform: translate(40%, -40%);
       cursor: pointer;

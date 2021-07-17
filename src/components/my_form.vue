@@ -9,7 +9,7 @@
       <input id="username"
              type="text"
              class="form_item"
-             :class="$v.form.username.$error ? 'invalid' : ''"
+             :class="$v.form.username.$error ? 'invalid_input' : ''"
              v-model.trim="form.username"
              placeholder="Ваше имя"
       >
@@ -27,26 +27,31 @@
           id="phone"
           type="text"
           class="form_item"
-          :class="$v.form.phone.$error ? 'invalid' : ''"
+          :class="$v.form.phone.$error ? 'invalid_input' : ''"
           v-model.trim.lazy="form.phone"
           placeholder="Телефон"
           v-phone
       >
       <span
           class="invalid_text"
-          v-if="$v.form.phone.$dirty && !$v.form.phone.required"
+          v-if="$v.form.phone.$dirty && !$v.form.phone.required && !$v.form.phone.minLength"
       >
         Обязательное поле
       </span>
+      <span
+          class="invalid_text"
+          v-if="$v.form.phone.$dirty && !$v.form.phone.minLength"
+      >
+        Не до конца введен телефон
+      </span>
     </div>
-
     <div class="form_group">
       <label for="address"/>
       <input
           id="address"
           type="text"
           class="form_item"
-          :class="$v.form.address.$error ? 'invalid' : ''"
+          :class="$v.form.address.$error ? 'invalid_input' : ''"
           v-model.trim="form.address"
           placeholder="Адрес"
       >
@@ -75,7 +80,7 @@
 <script>
 
 import {validationMixin} from 'vuelidate'
-import {required} from 'vuelidate/lib/validators'
+import {required, minLength} from 'vuelidate/lib/validators'
 import {mapActions} from 'vuex'
 
 export default {
@@ -92,7 +97,7 @@ export default {
   validations: {
     form: {
       username: {required},
-      phone: {required},
+      phone: {required, minLength: minLength(16)},
       address: {required}
     }
   },
@@ -113,23 +118,17 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .form_header {
   font-weight: 400;
   font-size: 18px;
-  color: #59606D;
-  //background-color: red;
+  color: $grey;
   margin: 32px 0 16px 0;
 }
 
 .form_group {
   width: 100%;
   margin-bottom: 16px;
-}
-
-.success {
-  border: 1px solid lawngreen !important;
-  outline: none;
 }
 
 .form_item {
@@ -141,8 +140,8 @@ export default {
   outline: none;
 }
 
-.invalid {
-  border: 1px solid red;
+.invalid_input {
+  border: 1px solid $red;
 
 }
 
@@ -150,33 +149,33 @@ export default {
   height: 50px;
   width: 100%;
   border-radius: 8px;
-  background-color: black;
-  color: white;
+  background-color: $black;
+  color: $white;
   border: none;
   cursor: pointer;
 }
 
 .form_btn:hover {
-  background-color: #59606D;
+  background-color: $grey;
 }
 
 .invalid_text {
   font-weight: 900;
   font-size: 8px;
-  color: red;
+  color: $red;
   margin-top: 6px;
 }
 
 .form_alert {
+  @include regular_text;
   display: flex;
-  font-size: 16px;
   margin-top: 32px;
 }
 
 .form_alert_signs {
   font-size: 32px;
   font-weight: bold;
-  color: #EB5757;
+  color: $red;
   margin-right: 8px;
   margin-top: -6px;
 

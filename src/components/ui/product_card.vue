@@ -97,9 +97,7 @@ export default {
   cursor: pointer;
 
   &__buttons_area {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    @include flex-align-center-space-between;
     position: absolute;
     width: 100%;
     margin-top: 13px;
@@ -108,12 +106,11 @@ export default {
   }
 
   &__details {
+    @include flex-column;
     width: 100%;
     height: 100%;
     margin-top: 18px;
     position: absolute;
-    display: flex;
-    flex-direction: column;
 
     &__photo {
       width: 65%;
@@ -121,23 +118,22 @@ export default {
     }
 
     &__title_container {
+      @include flex-column;
       width: 100%;
-      padding: 16px 16px 16px 16px;
-      display: flex;
-      flex-direction: column;
+      padding: 16px;
       justify-content: center;
 
       &__name {
         font-weight: normal;
         font-size: .83vw;
-        color: #59606D;
+        color: $grey;
         //background-color: red;
       }
 
       &__price {
         font-size: .83vw;
         font-weight: bold;
-        color: #1F1F1F;
+        color: $black;
         margin-top: 6px;
         //background-color: green;
       }

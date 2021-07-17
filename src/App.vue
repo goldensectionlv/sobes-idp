@@ -38,7 +38,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 * {
   margin: 0;
   padding: 0;
@@ -59,18 +59,14 @@ export default {
 
 .app_header {
   grid-area: app_header;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  @include flex-align-center-space-between;
   height: 66px;
 //border: 1px solid black
 }
 
 .app_title {
   grid-area: app_title;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  @include flex-align-center-space-between;
   width: 100%;
   padding-top: 25px;
 //border: 1px solid black

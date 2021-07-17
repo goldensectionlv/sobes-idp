@@ -118,18 +118,12 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .zoom {
   -ms-transform: scale(1.00); /* IE 9 */
   -webkit-transform: scale(1.00); /* Safari 3-8 */
   transform: scale(1.00);
   transition: 200ms ease-out;
-}
-
-.zoom:hover {
-  -ms-transform: scale(1.05); /* IE 9 */
-  -webkit-transform: scale(1.05); /* Safari 3-8 */
-  transform: scale(1.05);
-  transition: 100ms ease-out;
+  @include zoom_hover(1.1, 100ms);
 }
 </style>

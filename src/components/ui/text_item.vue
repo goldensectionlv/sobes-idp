@@ -47,20 +47,19 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .h1_class {
-  font-family: PT Sans, serif;
+  font-family: $main-font;
   font-style: normal;
   font-weight: bold;
   font-size: 32px;
   line-height: 41px;
-  color: #1F1F1F;
+  color: $black;
 }
 .disabled {
-  color: #959DAD;
+  color: $grey-light;
 }
 .regular {
-  font-size: 16px;
-  font-weight: 400;
+  @include regular_text;
 }
 </style>

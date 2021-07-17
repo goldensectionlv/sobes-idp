@@ -93,7 +93,7 @@ export default {
     display: flex;
     flex-direction: column;
     position: absolute;
-    background-color: white;
+    background-color: $white;
     width: 100%;
     padding: 12px 12px 6px 12px;
     margin-top: 6px;
@@ -108,7 +108,7 @@ export default {
 }
 
 .inactive_option {
-  color: #959DAD
+  color: $grey-light
 }
 
 .slide-enter-active {
