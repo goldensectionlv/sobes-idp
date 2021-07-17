@@ -51,9 +51,11 @@
           </div>
         </div>
         <!--        basket btn-->
+        <my_form/>
         <app_btn
             btn_text="Перейти к выбору"
             :action="close"
+            v-if="!basket_list.length"
         />
       </div>
     </transition>
@@ -65,11 +67,12 @@ import app_btn from "@/components/ui/app_btn";
 import app_icon from "@/components/ui/app_icon";
 import basket_item from "@/components/ui/basket_item";
 import text_item from "@/components/ui/text_item";
+import my_form from "@/components/ui/my_form";
 import {mapGetters, mapActions} from 'vuex'
 
 export default {
 
-  components: {app_btn, app_icon, basket_item, text_item},
+  components: {app_btn, app_icon, basket_item, text_item, my_form},
   computed: mapGetters(['basket_active', 'basket_list']),
   methods: {
     ...mapActions(['open_or_close_basket', 'delete_from_cart']),
