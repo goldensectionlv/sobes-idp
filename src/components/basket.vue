@@ -19,7 +19,6 @@
               :is_h1="true"
               :regular="false"
           />
-
           <app_icon
               :close="true"
               :zoom="true"
@@ -29,34 +28,44 @@
               :action="close"
           />
         </div>
-        <!--        basket body-->
-        <div
-            style="margin: 24px 0"
-        >
-          <text_item
-              text="Пока что вы ничего не добавили в корзину."
-              v-if="!basket_list.length"
-          />
-          <div
-              v-else
+        <!--        basket body products-->
+        <div style="margin: 24px 0">
+          <div v-if="!basket_list.length && !is_thanks_active"
           >
-            <transition-group name="basket_items_animation">
+            <text_item
+                style="margin: 24px 0"
+                text="Пока что вы ничего не добавили в корзину."
+            />
+            <!--        basket btn-->
+            <app_btn
+                style="margin: 24px 0"
+                btn_text="Перейти к выбору"
+                :action="close"
+            />
+          </div>
+
+          <transition-group name="basket_items_animation" v-else>
             <basket_item
                 v-for="(product, index) in basket_list" :key="product.id"
                 :product="product"
                 :index="index"
                 :action="delete_from_cart"
             />
-            </transition-group>
-          </div>
+          </transition-group>
         </div>
-        <!--        basket btn-->
-        <my_form/>
-        <app_btn
-            btn_text="Перейти к выбору"
-            :action="close"
-            v-if="!basket_list.length"
-        />
+
+        <!--        form-->
+        <my_form v-if="basket_list.length"/>
+
+        <!--thanks-->
+        <div
+            class="basket_container__thanks"
+            v-if="!basket_list.length && is_thanks_active"
+        >
+          <span class="basket_container__thanks__1">Заявка успешно отправлена</span>
+          <span class="basket_container__thanks__2">Вскоре наш менеджер свяжется с Вами</span>
+        </div>
+
       </div>
     </transition>
   </div>
@@ -67,15 +76,29 @@ import app_btn from "@/components/ui/app_btn";
 import app_icon from "@/components/ui/app_icon";
 import basket_item from "@/components/ui/basket_item";
 import text_item from "@/components/ui/text_item";
-import my_form from "@/components/ui/my_form";
+import my_form from "@/components/my_form";
 import {mapGetters, mapActions} from 'vuex'
 
 export default {
-
-  components: {app_btn, app_icon, basket_item, text_item, my_form},
-  computed: mapGetters(['basket_active', 'basket_list']),
+  components: {
+    app_btn,
+    app_icon,
+    basket_item,
+    text_item,
+    my_form
+  },
+  computed: mapGetters([
+    'basket_active',
+    'basket_list',
+    'is_thanks_active'
+  ]),
   methods: {
-    ...mapActions(['open_or_close_basket', 'delete_from_cart']),
+    ...mapActions([
+      'open_or_close_basket',
+      'delete_from_cart',
+      'local_storage_request',
+      'is_thanks_active_switcher'
+    ]),
     close() {
       this.open_or_close_basket(false)
     },
@@ -93,12 +116,32 @@ export default {
   justify-content: flex-end;
   background-color: rgba(0, 0, 0, .5);
   z-index: 2;
+
   &__basket {
     width: 460px;
     background-color: white;
     height: 100%;
     overflow-y: scroll;
     padding: 52px;
+  }
+
+  &__thanks {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 85%;
+    width: 100%;
+
+    &__1 {
+      font-size: 24px;
+      font-weight: bold
+    }
+
+    &__2 {
+      font-size: 16px;
+      color: #59606D;
+    }
   }
 }
 
@@ -121,10 +164,13 @@ export default {
   display: inline-block;
   margin-right: 10px;
 }
+
 .basket_items_animation-enter-active, .basket_items_animation-leave-active {
   transition: all 300ms;
 }
-.basket_items_animation-enter, .basket_items_animation-leave-to /* .list-leave-active до версии 2.1.8 */ {
+
+.basket_items_animation-enter, .basket_items_animation-leave-to /* .list-leave-active до версии 2.1.8 */
+{
   opacity: 0;
   transform: translateX(30px);
 }

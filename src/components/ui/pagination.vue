@@ -1,6 +1,5 @@
 <template>
-  <div
-  >
+  <div>
     <div
         class="number_of_page_item"
         v-for="page of pageCount" :key="page"

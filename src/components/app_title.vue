@@ -1,7 +1,5 @@
 <template>
-  <div
-      @mouseleave="close"
-  >
+  <div @mouseleave="close">
     <text_item
         text="Каталог"
         :is_h1="true"

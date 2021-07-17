@@ -4,9 +4,7 @@
         text="TestList"
         class="app_header-testList"
     />
-    <div
-        class="app_header-icon_container"
-    >
+    <div class="app_header-icon_container">
       <text_item
           :text="String(total)"
           class="app_header-icon_container-counter"

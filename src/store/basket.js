@@ -1,11 +1,15 @@
-
 export default {
     state: {
         basket_active: false,
-        basket_list: []
+        basket_list: [],
+        is_form_send: false,
+        is_thanks_active: false
     },
     mutations: {
         open_or_close_basket(state, action) {
+            if (state.is_thanks_active)  {
+                state.is_thanks_active = false
+            }
             state.basket_active = action
         },
         add_to_cart(state, product) {
@@ -38,8 +42,13 @@ export default {
             let data = localStorage.getItem('basket_data')
             if (data !== null) {
                 state.basket_list = JSON.parse(data)
+            } else {
+                state.basket_list = []
             }
         },
+        is_thanks_active_switcher(state, status) {
+            state.is_thanks_active = status
+        }
     },
     actions: {
         open_or_close_basket(ctx, action) {
@@ -54,6 +63,9 @@ export default {
         local_storage_request(ctx) {
             ctx.commit('local_storage_request')
         },
+        is_thanks_active_switcher(ctx, status) {
+            ctx.commit('is_thanks_active_switcher', status)
+        }
     },
     getters: {
         basket_active(state) {
@@ -61,6 +73,12 @@ export default {
         },
         basket_list(state) {
             return state.basket_list
+        },
+        is_form_send(state) {
+            return state.is_form_send
+        },
+        is_thanks_active(state) {
+            return state.is_thanks_active
         }
     }
 }

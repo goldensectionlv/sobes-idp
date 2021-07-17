@@ -1,7 +1,5 @@
 <template>
-  <div
-      class="basket_item"
-  >
+  <div class="basket_item">
     <!--    basket photo-->
     <product_photo
         :photo_link="'https://frontend-test.idaproject.com' + product.photo"
@@ -9,9 +7,7 @@
         style="width: 30%"
     />
     <!--    product info-->
-    <div
-        class="basket_item__info"
-    >
+    <div class="basket_item__info">
       <text_item
           :text="product.name.toLowerCase().split(/\s+/).map(word => word[0].toUpperCase()
           + word.substring(1)).join(' ')
