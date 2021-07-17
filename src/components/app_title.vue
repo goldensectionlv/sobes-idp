@@ -32,7 +32,7 @@
               v-for="option in filter_options" :key="option.name"
               :text="'По ' + option.name"
               :action="option.action"
-              :class="option.name !== modal_filter.active_product_filter ? '' : 'inactive_option'"
+              :class="option.name !== modal_filter.active_product_filter ? 'inactive_option' : ''"
           />
         </div>
       </transition>

@@ -62,6 +62,7 @@
             class="basket_container__thanks"
             v-if="!basket_list.length && is_thanks_active"
         >
+          <img :src="require('@/assets/ok-hand-sign.svg')" alt="thanks" style="margin-bottom: 24px;">
           <span class="basket_container__thanks__1">Заявка успешно отправлена</span>
           <span class="basket_container__thanks__2">Вскоре наш менеджер свяжется с Вами</span>
         </div>

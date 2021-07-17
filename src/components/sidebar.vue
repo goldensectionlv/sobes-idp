@@ -58,6 +58,10 @@ export default {
   margin-bottom: 16px;
   cursor: pointer;
 }
+.category:hover {
+  color: #59606D;
+  text-decoration: none;
+}
 
 .active_category {
   text-decoration-line: underline;

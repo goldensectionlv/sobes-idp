@@ -1,5 +1,9 @@
 <template>
+
   <form @submit.prevent="form_submit">
+    <div class="form_header">
+      Оформить заказ
+    </div>
     <div class="form_group">
       <label for="username"/>
       <input id="username"
@@ -7,7 +11,7 @@
              class="form_item"
              :class="$v.form.username.$error ? 'invalid' : ''"
              v-model.trim="form.username"
-             placeholder="Имя"
+             placeholder="Ваше имя"
       >
       <span
           class="invalid_text"
@@ -25,7 +29,7 @@
           class="form_item"
           :class="$v.form.phone.$error ? 'invalid' : ''"
           v-model.trim.lazy="form.phone"
-          placeholder="+7 ___ ___-__-__"
+          placeholder="Телефон"
           v-phone
       >
       <span
@@ -55,6 +59,14 @@
 
     <div>
       <button type="submit" class="form_btn">Отправить</button>
+    </div>
+
+    <div
+        class="form_alert"
+        v-if="$v.form.$error"
+    >
+      <div class="form_alert_signs">!!</div>
+      Все поля обязательные. После удачной отправки формы содержимое корзины очищается
     </div>
   </form>
 
@@ -102,6 +114,14 @@ export default {
 </script>
 
 <style scoped>
+.form_header {
+  font-weight: 400;
+  font-size: 18px;
+  color: #59606D;
+  //background-color: red;
+  margin: 32px 0 16px 0;
+}
+
 .form_group {
   width: 100%;
   margin-bottom: 16px;
@@ -116,7 +136,7 @@ export default {
   height: 50px;
   width: 100%;
   border-radius: 8px;
-  border: 1px solid rgba(0, 0, 0, .3);
+  border: none;
   padding: 15px 14px;
   outline: none;
 }
@@ -147,4 +167,18 @@ export default {
   margin-top: 6px;
 }
 
+.form_alert {
+  display: flex;
+  font-size: 16px;
+  margin-top: 32px;
+}
+
+.form_alert_signs {
+  font-size: 32px;
+  font-weight: bold;
+  color: #EB5757;
+  margin-right: 8px;
+  margin-top: -6px;
+
+}
 </style>

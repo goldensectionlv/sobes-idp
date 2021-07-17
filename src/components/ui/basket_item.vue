@@ -1,10 +1,11 @@
 <template>
   <div class="basket_item">
+
     <!--    basket photo-->
     <product_photo
         :photo_link="'https://frontend-test.idaproject.com' + product.photo"
         :alt="product.name"
-        style="width: 30%"
+        style="width: 30%; align-self: center"
     />
     <!--    product info-->
     <div class="basket_item__info">
@@ -18,9 +19,17 @@
           :symbol="true"
           style="font-weight: bold"
       />
+
+      <ratings
+          style="margin-top: 12px"
+          :rating="product.rating"
+      />
+
+
     </div>
     <!--    basket button-->
     <div
+        style="align-self: center"
         @mouseenter="btn_hover = true"
         @mouseleave="btn_hover = false"
     >
@@ -41,6 +50,7 @@
 import product_photo from "@/components/ui/product_photo";
 import app_icon from "@/components/ui/app_icon";
 import text_item from "@/components/ui/text_item";
+import ratings from "@/components/ui/ratings";
 
 export default {
   data() {
@@ -49,7 +59,7 @@ export default {
     }
   },
   components: {
-    product_photo, app_icon, text_item
+    product_photo, app_icon, text_item, ratings
   },
   props: {
     product: Object,
@@ -68,19 +78,23 @@ export default {
 .basket_item {
   width: 100%;
   display: flex;
-  align-items: center;
+  //align-items: center;
   justify-content: space-between;
   height: 120px;
-  border: 1px solid rgba(0, 0, 0, .1);
+  //border: 1px solid rgba(0, 0, 0, .1);
   border-radius: 8px;
   margin-bottom: 12px;
   padding: 15px 25px;
+  //background-color: red;
   &__info {
     display: flex;
     flex-direction: column;
+    //justify-content: space-between;
     width: 70%;
     font-size: 14px;
     padding: 0 15px;
+    //border: 1px solid rgba(0, 0, 0, .1);
+    height: 100%;
   }
 }
 
