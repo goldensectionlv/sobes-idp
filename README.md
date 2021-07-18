@@ -1,5 +1,7 @@
 # sobes-frontend
 
+# Демонстрация https://ida-vue-app.herokuapp.com
+
 ## Project setup
 ```
 npm install
