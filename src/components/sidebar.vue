@@ -61,7 +61,6 @@ export default {
 }
 .category:hover {
   color: $grey-light;
-  text-decoration: none;
 }
 
 .active_category {

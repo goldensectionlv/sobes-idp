@@ -2,12 +2,12 @@
   <div>
     <text_item
         text="TestList"
-        class="app_header-testList"
+        class="app_header__testList"
     />
-    <div class="app_header-icon_container">
+    <div class="app_header__icon_container">
       <text_item
           :text="String(total)"
-          class="app_header-icon_container-counter"
+          class="app_header__icon_container__counter"
           :action="open"
       />
       <app_icon
@@ -53,13 +53,14 @@ export default {
   },
   mounted() {
     this.local_storage_request()
+
   }
 }
 </script>
 
 <style lang="scss" scoped>
 .app_header {
-  &-testList {
+  &__testList {
     font-style: normal;
     font-weight: bold;
     font-size: 22px;
@@ -67,10 +68,10 @@ export default {
     color: $grey;
   }
 
-  &-icon_container {
+  &__icon_container {
     position: relative;
 
-    &-counter {
+    &__counter {
       @include flex-align-center;
       width: 15px;
       height: 15px;

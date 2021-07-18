@@ -50,6 +50,7 @@ export default {
             state.is_thanks_active = status
         }
     },
+
     actions: {
         open_or_close_basket(ctx, action) {
             ctx.commit('open_or_close_basket', action)
