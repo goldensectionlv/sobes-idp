@@ -5,7 +5,7 @@
     <product_photo
         :photo_link="'https://frontend-test.idaproject.com' + product.photo"
         :alt="product.name"
-        style="width: 30%; align-self: center"
+        class="basket_item__photo"
     />
     <!--    product info-->
     <div class="basket_item__info">
@@ -83,6 +83,12 @@ export default {
   border-radius: 8px;
   margin-bottom: 12px;
   padding: 15px 25px;
+
+  &__photo {
+    width: 30%;
+    align-self: center
+  }
+
   &__info {
     @include flex-column;
     width: 70%;
